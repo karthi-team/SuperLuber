@@ -1,6 +1,6 @@
 <link rel="stylesheet" type="text/css" href="{!! asset('assets/css/page/button.css') !!}">
 @extends('layouts/main_page')
-@section('page_title','Pump Status')
+@section('page_title','Market Creation')
 @section('header_content')
 @endsection
 @section('main_content')
@@ -9,9 +9,9 @@
   <div class="col-md-12">
     <div class="card">
       <div class="card-header">
-        <h4><span class="label info small">Pump Status</span></h4>
+        <h4><span class="label info small">Market Master</span></h4>
         <div class="card-header-action" id="user_rights_add_div">
-            <button type="submit" class="button" onclick="open_model('Pump Status','')">Create</button>
+            <button type="submit" class="button" onclick="open_model('Market Creation','')">Create</button>
         </div>
       </div>
       <div class="card-body" id="list_div">

@@ -5,23 +5,19 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-//use App\Models\MarketCreation;
 use App\Models\StateCreation;
 use App\Models\MarketCreation;
 use App\Models\DistrictCreation;
+use App\Models\PumpCreation;
+use Illuminate\Support\Facades\Log;
 class MarketController extends Controller
 {
     public function retrieve($id)
     {
-
-        $StateCreation_tb = (new StateCreation)->getTable();
-        $DistrictCreation_tb = (new DistrictCreation)->getTable();
-        $MarketController_td = (new MarketCreation)->getTable();
-
-        if($id=='')
-        {return MarketCreation::join($StateCreation_tb, $StateCreation_tb.'.id', '=', $MarketController_td.'.state_id')->where($MarketController_td.'.delete_status', '0')->orWhereNull($MarketController_td.'.delete_status')->join($DistrictCreation_tb, $MarketController_td.'.district_id', '=', $DistrictCreation_tb.'.id')->orderBy($MarketController_td.'.area_name')->get([$MarketController_td.'.id',$MarketController_td.'.state_id',$StateCreation_tb.'.state_name',$MarketController_td.'.district_id',$DistrictCreation_tb.'.district_name',$MarketController_td.'.area_name',$MarketController_td.'.description',$MarketController_td.'.status']);}
+         if($id=='')
+        {return PumpCreation::select('id','operator','description','pumpstatus','datetime','duration')->get();}
         else
-        {return MarketCreation::join($StateCreation_tb, $StateCreation_tb.'.id', '=', $MarketController_td.'.state_id')->join($DistrictCreation_tb, $MarketController_td.'.district_id', '=', $DistrictCreation_tb.'.id')->orderBy($MarketController_td.'.area_name')->where($MarketController_td.'.id','=',$id)->get([$MarketController_td.'.id',$MarketController_td.'.state_id',$StateCreation_tb.'.state_name',$MarketController_td.'.district_id',$DistrictCreation_tb.'.district_name',$MarketController_td.'.area_name',$MarketController_td.'.description'])->first();}
+        {return PumpCreation::select('id','operator','description','pumpstatus','datetime','duration')->where('id','=',$id)->get();}
 
     }
     public function db_cmd(Request $request)
@@ -29,26 +25,28 @@ class MarketController extends Controller
         $action=$request->input('action');
         if($action=='insert')
         {
-            $tb = new MarketCreation();
-            $tb->state_id = $request->input('state_id');
-            $tb->district_id = $request->input('district_id');
-            $tb->area_name	 = $request->input('area_name');
-            $tb->status='1';
+            $tb = new PumpCreation();
+            $tb->operator = $request->input('operator');
             $tb->description = $request->input('description');
+            $tb->pumpstatus	 = $request->input('pumpstatus');
+            $tb->datetime = $request->input('datetime');
+            $tb->duration = $request->input('duration');
+            $tb->status='1';
             $tb->save();
         }
         else if($action=='update')
         {
-            $tb = MarketCreation::find($request->input('id'));
-            $tb->state_id = $request->input('state_id');
-            $tb->district_id = $request->input('district_id');
-            $tb->area_name	 = $request->input('area_name');
+            $tb = PumpCreation::find($request->input('id'));
+            $tb->operator = $request->input('operator');
             $tb->description = $request->input('description');
+            $tb->pumpstatus	 = $request->input('pumpstatus');
+            $tb->datetime = $request->input('datetime');
+            $tb->duration = $request->input('duration');
             $tb->save();
         }
         else if($action=='delete')
         {
-            $tb = MarketCreation::where('id','=',$request->input('id'));
+            $tb =PumpCreation::where('id','=',$request->input('id'));
             $tb->delete();
         }
         else if($action=='retrieve')
@@ -81,34 +79,13 @@ class MarketController extends Controller
                 'district_creation' => $district_creation
             ]);
         }
-
         else if($action=='update_form')
+        
         {
 
-            $id_state = $request->input('id');
-
-            $state_name = StateCreation::select('id', 'state_name')
-            ->orderBy('state_name')
-            ->get();
-
-            $area_creation=MarketCreation::select('id','state_id')->where('id','=',$id_state)->orderBy('id')->get()->first();
-
-            if($area_creation){
-                $area_drop_id = $area_creation->state_id;
-            }else{
-                $area_drop_id = 0;
-            }
-
-            $district_creation=DistrictCreation::select('id','district_name')->where('state_id','=',$area_drop_id)->orderBy('district_name')->get();
-
-            // $district_creation = DistrictCreation::select('district_creation.id', 'district_creation.district_name')->where('state_id','=',$area_drop_id)->where('district_creation.delete_status', '0')->orWhereNull('district_creation.delete_status')
-            // ->join('state_creation', 'state_creation.id', '=', 'district_creation.state_id')
-            // ->orderBy('district_creation.district_name')
-            // ->get();
-
             $market_creation=$this->retrieve($request->input('id'));
-
-            return view('Masters.market_creation.update',['state_name'=>$state_name,'area_creation'=>$area_creation,'district_creation'=>$district_creation,'market_creation'=>$market_creation]);
+        Log::info("shops_type 123", $market_creation->toArray());
+            return view('Masters.market_creation.update',['market_creation'=>$market_creation[0]]);
         }
 
         else if($action=='getDistricts')

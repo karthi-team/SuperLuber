@@ -1,45 +1,50 @@
 <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-6">
-<form action="javascript:insert_update_row('',state_id.value,district_id1.value,area_name.value,description.value)">
+<form action="javascript:insert_update_row('',operator.value,description.value,pumpstatus.value,datetime.value,duration.value)">
 
         <div class="form-group">
-               <label class="stl">State Name</label><label style="color: red">*</label>
-            <select class="select2-search__field" id="state_id" name="state_id" onchange="getDistricts()">
-                <option value="">--Select State--</option>
-                @foreach ($state_name as $state)
-                    <option value="{{ $state->id }}">{{ $state->state_name }}</option>
-                @endforeach
-            </select>
-            <div id="state_id_validate_div" class="mark_label_red"></div>
-        </div>
-
-        <div class="form-group">
-                 <label class="stl">District Name</label><label style="color: red">*</label>
-            <select class="select2-search__field" id="district_id1" name="district_id1">
-                <option value="">--Select District--</option>
-            </select>
-            <div id="district_id_validate_div" class="mark_label_red"></div>
-
-        </div>
-
-
-
+            {{-- oprtator --}}
             <div class="form-group">
-                    <label class="stl">Market Name</label><label style="color: red">*</label>
-                <input type="text" id="area_name" class="form-control"  placeholder="Enter Area Name">
-                <div id="area_name_validate_div" class="mark_label_red"></div>
+                    <label class="stl">Operator Name</label><label style="color: red">*</label>
+                <input type="text" id="operator" class="form-control"  placeholder="Enter Operator Name">
+                <div id="operator_validate_div" class="mark_label_red"></div>
             </div>
-
-
-
-            <div class="form-group">
+            {{-- description --}}
+             <div class="form-group">
                    <label for="description" class="stl">Description</label>
                 <textarea class="form-control" id="description" name="description" placeholder="Description" rows="4"></textarea>
+                 <div id="description_validate_div" class="mark_label_red"></div>
             </div>
+            {{-- status --}}
+            <div class="form-group">
+           <label class="stl">Status</label><label style="color: red">*</label>
+            <select class="select2-search__field form-control" id="pumpstatus" name="pumpstatus" onchange="getDistricts()">
+                <option value="">select</option>
+                <option value="running">running</option>
+                <option value="stoped">stoped</option>
+                <option value="ideal">ideal</option>
+                {{-- @foreach ($state_name as $state)
+                    <option value="{{ $state->id }}">{{ $state->state_name }}</option>
+                @endforeach --}}
+            </select>
+            <div id="pumpstatus_validate_div" class="mark_label_red"></div>
+            </div>
+              
+        </div>
 
-
-
+       {{-- date and time --}}
+         <div class="form-group">
+                    <label class="stl">Date/Time</label><label style="color: red">*</label>
+                <input type="datetime-local" id="datetime" class="form-control"  placeholder="Enter Date and Time">
+                <div id="datetime_validate_div" class="mark_label_red"></div>
+            </div>
+              {{-- duration --}}
+                <div class="form-group">
+                    <label class="stl">Duration(hours)</label><label style="color: red">*</label>
+                <input type="number" id="duration" class="form-control"  placeholder="Enter duration">
+                <div id="duration_validate_div" class="mark_label_red"></div>
+            </div>
             <div class="row">
                 <div class="col-md-6">
                   <button class="btn btn-icon icon-left btn-danger" data-dismiss="modal" aria-label="Close">

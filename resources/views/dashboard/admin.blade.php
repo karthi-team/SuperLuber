@@ -11,7 +11,7 @@
           <div class="row ">
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
               <div class="card-content">
-                <h5 class="font-15">Sales Rep</h5>
+                <h5 class="font-15">Customer Details</h5>
                 <h2 class="mb-3 font-18">{{$sales_count}}</h2>
                 {{-- <p class="mb-0"><span class="col-green">{{($sales_count/100)*100}}%</span> Increase</p> --}}
               </div>
@@ -34,7 +34,7 @@
           <div class="row ">
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
               <div class="card-content">
-                <h5 class="font-15"> Dealers</h5>
+                <h5 class="font-15"> Supplier Details</h5>
                 <h2 class="mb-3 font-18">{{$dealers}}</h2>
                 {{-- <p class="mb-0"><span class="col-green">09%</span> Decrease</p> --}}
               </div>
@@ -56,7 +56,7 @@
           <div class="row ">
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
               <div class="card-content">
-                <h5 class="font-15">Shops</h5>
+                <h5 class="font-15">Machine Details</h5>
                 <h2 class="mb-3 font-18">{{$shop}}</h2>
                 {{-- <p class="mb-0"><span class="col-green">18%</span>
                   Increase</p> --}}
@@ -79,7 +79,7 @@
           <div class="row ">
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
               <div class="card-content">
-                <h5 class="font-15">Order Receipt</h5>
+                <h5 class="font-15">Pump Status Details</h5>
                 <h2 class="mb-3 font-18">{{$c_to_d}}</h2>
                 {{-- <p class="mb-0"><span class="col-green">42%</span> Increase</p> --}}
               </div>
@@ -96,7 +96,7 @@
   </div>
 </div>
 {{-- Nxt Line --}}
-<div class="row ">
+{{-- <div class="row ">
     <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
       <div class="card">
         <div class="card-statistic-4">
@@ -107,15 +107,15 @@
                   <h5 class="font-15">Secondary Sales</h5>
                   <h2 class="mb-3 font-18">{{$d_to_s}}</h2>
                   {{-- <p class="mb-0"><span class="col-green">10%</span> Increase</p> --}}
-                </div>
+                {{-- </div>
               </div>
               <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0">
                 <div class="banner-img">
                   <img src="{!! asset('assets/img/banner/a4.jpg') !!}" alt="">
                 </div>
-              </div>
+              </div> --}}
               {{-- {!! asset('assets/css/page/button.css') !!} --}}
-            </div>
+            {{-- </div>
           </div>
         </div>
       </div>
@@ -128,9 +128,9 @@
               <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
                 <div class="card-content">
                   <h5 class="font-15"> Order Dispatch</h5>
-                  <h2 class="mb-3 font-18">{{$delivery}}</h2>
+                  <h2 class="mb-3 font-18">{{$delivery}}</h2> --}}
                   {{-- <p class="mb-0"><span class="col-green">09%</span> Decrease</p> --}}
-                </div>
+                {{-- </div>
               </div>
               <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0">
                 <div class="banner-img">
@@ -150,10 +150,10 @@
               <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
                 <div class="card-content">
                   <h5 class="font-15">Income (<?php echo date('Y');?>)</h5>
-                  <h2 class="mb-3 font-18">₹{{$delivery_sub_total}}</h2>
+                  <h2 class="mb-3 font-18">₹{{$delivery_sub_total}}</h2> --}}
                   {{-- <p class="mb-0"><span class="col-green">18%</span>
                     Increase</p> --}}
-                </div>
+                {{-- </div>
               </div>
               <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0">
                 <div class="banner-img">
@@ -173,9 +173,9 @@
               <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
                 <div class="card-content">
                   <h5 class="font-15">Sales Return</h5>
-                  <h2 class="mb-3 font-18">₹{{$return_sub_total}}</h2>
+                  <h2 class="mb-3 font-18">₹{{$return_sub_total}}</h2> --}}
                   {{-- <p class="mb-0"><span class="col-green">42%</span> Increase</p> --}}
-                </div>
+                {{-- </div>
               </div>
               <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0">
                 <div class="banner-img">
@@ -187,7 +187,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div>  --}}
 {{-- End --}}
 <div class="row">
   <div class="col-12 col-sm-12 col-lg-12">
@@ -368,9 +368,9 @@
                                       data-toggle="tooltip"
                                       title=""
                                       data-original-title="{{$dealers_value->dealer_name}}"
-                                  >     
+                                  >
 
-                             
+
                                 </li>
                             </ul>
                         </td>

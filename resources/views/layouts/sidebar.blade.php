@@ -42,7 +42,7 @@
         <li <?php echo ($cur_pg_uri == "District_Creation" ? " class='active'" : "") . $perm_view_details['3']['10']; ?>><a href="{{ route('Machine_Creation') }}">Machine Entry</a></li>
         <li <?php echo ($cur_pg_uri == "Pump_Creation" ? " class='active'" : "") . $perm_view_details['3']['11']; ?>><a href="{{ route('Pump_Creation') }}">Pump Status</a></li>
         <li <?php echo ($cur_pg_uri == "Customer_Creation" ? " class='active'" : "") . $perm_view_details['3']['25']; ?>><a href="{{ route('Customer_Creation') }}">Customer Creation</a></li>
-        <li <?php echo ($cur_pg_uri == "Alert_Creation" ? " class='active'" : "") . $perm_view_details['3']['19']; ?>><a href="{{ route('Alert_Creation') }}">Alert Notification(Time Based)</a></li>
+        <li <?php echo ($cur_pg_uri == "Alert_Creation" ? " class='active'" : "") . $perm_view_details['3']['19']; ?>><a href="{{ route('Alert_Creation') }}">Alert Notification</a></li>
         <li <?php echo ($cur_pg_uri == "Supplier_Creation" ? " class='active'" : "") . $perm_view_details['3']['17']; ?>><a href="{{ route('Supplier_Creation') }}">Supplier Creation</a></li>
     </ul>
 </li>
@@ -64,8 +64,9 @@
 <!-- Add relevant menu items for the fifth section -->
 <?php endif; ?>
 
-<li <?php if($cur_pg_uri=="Dealer_Creation"){echo " class='active'";}echo $perm_view_details['3']['18']; ?>><a href="{{ route('Dealer_Creation') }}"><i data-feather="users"></i>Dealer Creation</a></li>
-<?php if(in_array("",$perm_view_details['4'])){ ?>
+{{-- <li <?php if($cur_pg_uri=="Dealer_Creation"){echo " class='active'";}echo $perm_view_details['3']['18']; ?>><a href="{{ route('Dealer_Creation') }}"><i data-feather="users"></i>Dealer Creation</a></li> --}}
+
+{{-- <?php if(in_array("",$perm_view_details['4'])){ ?>
 <li class="dropdown <?php if(in_array($cur_pg_uri, array("Attendance_Entry","Sales_Order-COMPANY_TO_DEALER","Sales_Order-DEALER_TO_SHOP","Sales_Order_Stock","Sales_Order_Delivery","Expense_creations","Receipt_Entry","Sales_Return-DEALER_TO_COMPANY"))){echo " active";} ?>">
     <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="check-square"></i><span>Entry &nbsp; &nbsp; &nbsp; <img src="{{ asset('assets/img/info.png') }}" width="20" height="20" title="Entry Info" onclick="entry_info2()" alt="Info Image"></span></a>
     <ul class="dropdown-menu">
@@ -92,7 +93,7 @@
         <?php }?>
     </ul>
 </li>
-<?php }?>
+<?php }?> --}}
 <?php if(in_array("",$perm_view_details['5'])){ ?>
     <li class="dropdown <?php if(in_array($cur_pg_uri, array("Beats_Wise_Report","Sales_Order_Report_c2d","Dealer_Order_Report","Effective_Calls_Report","visit_shop_Report","dealer_sales_report","Item_Sales_pending_Month_Wise_Report","e_c_report","Sales_Box_Report","Receipt_Report","excutive_sales_report","Shop_Report"))){echo " active";} ?>">
     <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="book"></i><span>Reports</span></a>
